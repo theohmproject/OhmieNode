@@ -1,12 +1,12 @@
 {
   "CONFIG":[
     {
-      "Version":"1.2.1"
-    },  
+      "Version":"1.2.4"
+    },
     {
       "RPC":[
         {
-          "LogDebug":true,
+          "LogDebug":false,
           "Server":"127.0.0.1",
           "Username":"RPC_USERNAME",
           "Port":"52021",
@@ -17,9 +17,11 @@
     {
       "EMAIL":[
         {
+          "Enabled":false,
           "FowardTo":"admin@ohmcoin.org",
           "SystemFrom":"system@ohmc.tips",
-          "SystemFromName":"ohmc.tips SYSTEM"
+          "SystemFromName":"ohmc.tips SYSTEM",
+          "ServerName":"ohmc.tips"
         }
       ]
     },
