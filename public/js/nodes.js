@@ -1,8 +1,8 @@
 
-ajax_load_block();
-setInterval(ajax_load_block, 28800);
-ajax_load_conns();
-setInterval(ajax_load_conns, 42200);
+setTimeout(ajax_load_block(), 100);
+setInterval(ajax_load_block, 38800);
+setTimeout(ajax_load_conns(), 500);
+setInterval(ajax_load_conns, 64200);
 
 function ajax_load_block() {
   element = "";
@@ -27,6 +27,13 @@ function ajax_load_block() {
     console.error(event);
   });
   xhr.addEventListener("load", function (event) {
+    if (xhr.status != 200) {
+      document.getElementById("blockhash").classList.remove("coloryellow");
+      document.getElementById("blockhash").classList.add("colorred");
+      document.getElementById("blockcount").classList.remove("coloryellow");
+      document.getElementById("blockcount").classList.add("colorred");
+      document.getElementById("blockcount").innerHTML = "ERROR!!";
+    } else {
       json = JSON.parse(this.responseText);
       document.getElementById("blockhash").innerHTML = json.blockhash;
       document.getElementById("blockcount").innerHTML = json.height;
@@ -36,7 +43,9 @@ function ajax_load_block() {
         document.getElementById("blockcount").classList.remove("coloryellow");
         document.getElementById("blockcount").classList.remove("colorred");
       }, 400);
+    }
   });
+  xhr.timeout = 9000;
   xhr.send();
 }
 
@@ -58,12 +67,19 @@ function ajax_load_conns() {
     console.error(event);
   });
   xhr.addEventListener("load", function (event) {
+    if (xhr.status != 200) {
+      document.getElementById("networkconn").classList.remove("coloryellow");
+      document.getElementById("networkconn").classList.add("colorred");
+      document.getElementById("networkconn").innerHTML = "NA";
+    } else {
       json = JSON.parse(this.responseText);
       document.getElementById("networkconn").innerHTML = json.connections;
       setTimeout(function() {
         document.getElementById("networkconn").classList.remove("coloryellow");
         document.getElementById("networkconn").classList.remove("colorred");
       }, 400);
+    }
   });
+  xhr.timeout = 9000;
   xhr.send();
 }

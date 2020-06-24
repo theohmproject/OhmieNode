@@ -10,6 +10,18 @@ body {
   margin: 0px;
 }
 
+.header2 {
+  margin: 16px 2px 1px 2px;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.header5 {
+  margin: 0px 2px 20px 2px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
 .static {
   position: relative; #absolute
   padding: 0px;
@@ -169,6 +181,22 @@ body {
 a {
   color: #fff;
   text-decoration: none;
+  transition: all 0.8s;
+  transition-delay: 0.2s;
+}
+
+a:hover {
+  text-decoration: none;
+  text-shadow:
+    -1px -1px 3px rgba(145, 255, 202, 0.94),
+    1px -1px 3px rgba(145, 255, 202, 0.94),
+    -1px 1px 3px rgba(145, 255, 202, 0.94),
+    1px 1px 3px rgba(145, 255, 202, 0.94);
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  transition-delay: 0.01s;
 }
 
 a::before {
